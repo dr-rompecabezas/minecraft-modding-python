@@ -5,12 +5,12 @@ mc = Minecraft.create()
 
 
 def teleport_world_spawn():
-    time.sleep(10)
+    time.sleep(1)
     mc.player.setTilePos(0, 0, 0)
 
 
 def teleport(x, y, z):
-    time.sleep(10)
+    # time.sleep(10)
     mc.player.setTilePos(x, y, z)
 
 
