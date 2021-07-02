@@ -1,17 +1,22 @@
-import set_blocks as sb
+from mcpi.minecraft import Minecraft
+mc = Minecraft.create()
 
-
-def create_lamp_post(x, z):
-    x = 8
-    z = 5
+def create_lamp_post(x, y, z):
     fence = 85
-    glow_stone = 89
+    glowstone = 89
     trapdoor = 96
-    sb.place_block(x, 1, z, fence)
-    sb.place_block(x, 2, z, fence)
-    sb.place_block(x, 3, z, fence)
-    sb.place_block(x, 4, z, glow_stone)
-    sb.place_block(x, 4, z-1, trapdoor, 4)
-    sb.place_block(x-1, 4, z, trapdoor, 6)
-    sb.place_block(x+1, 4, z, trapdoor, 7)
-    sb.place_block(x, 4, z+1, trapdoor, 5)
+    slab = 44
+    mc.setBlock(x, y, z, fence)
+    mc.setBlock(x, y+1, z, fence)
+    mc.setBlock(x, y+2, z, fence)
+    mc.setBlock(x, y+3, z, glowstone)
+    mc.setBlock(x, y+3, z-1, trapdoor, 4)
+    mc.setBlock(x, y+3, z+1, trapdoor, 5)
+    mc.setBlock(x-1, y+3, z, trapdoor, 6)
+    mc.setBlock(x+1, y+3, z, trapdoor, 7)
+    mc.setBlock(x, y+4, z, slab)
+
+pos = mc.player.getTilePos()
+x, y, z = pos.x, pos.y, pos.z
+
+create_lamp_post(x, y, z)
