@@ -3,7 +3,7 @@ mc = Minecraft.create()
 
 
 def teleport_world_spawn():
-    mc.player.setTilePos(0, 0, 0)
+    mc.player.setTilePos(1, 21, 0)
 
 
 def teleport(x, y, z):
