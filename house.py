@@ -4,18 +4,17 @@ mc = Minecraft.create()
 pos = mc.player.getTilePos()
 x, y, z = pos.x, pos.y, pos.z
 
-width = 1
-height = 0
-length = 1
+width = 8
+height = 4
+length = 6
 
 crafting_table = 58
 oak_wood = 17
 cobblestone = 4
 iron_block = 42
 diamond_block = 57
+quartz = 155
 air = 0
 
-mc.setBlocks(x+2 , y, z, x+width, y, z+length, cobblestone)
-mc.setBlocks(x+4 , y, z, x+4+width, y, z+length, oak_wood)
-mc.setBlocks(x+6 , y, z, x+6+width, y, z+length, iron_block)
-mc.setBlocks(x+8 , y, z, x+8+width, y, z+length, diamond_block)
+mc.setBlocks(x, y, z, x+width, y+height, z+length, quartz)
+mc.setBlocks(x+1, y+1, z+1, x+width-1, y+height-1, z+length-1, air)

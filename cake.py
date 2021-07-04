@@ -2,7 +2,7 @@ from mcpi.minecraft import Minecraft
 mc = Minecraft.create()
 
 pos = mc.player.getTilePos()
-x = pos.x
+x = pos.x + 1
 y = pos.y
 z = pos.z
 
