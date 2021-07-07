@@ -7,7 +7,7 @@ y = pos.y - 1
 z = pos.z - 1
 
 ladder = 65
-ladder_steps = 15
+ladder_steps = 30
 
 for step in range(ladder_steps):
   mc.setBlock(x, y, z, ladder)

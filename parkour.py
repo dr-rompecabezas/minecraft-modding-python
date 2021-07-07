@@ -11,7 +11,6 @@ def parkour_gen():
     y = pos.y -1
     z = pos.z
     for i in range(parkour_distance):
-        # random_blocks = random.randint(0, len(blocks) - 1)
         random_x = random.randint(0, 2)
         random_y = random.randint(-1, 1)
         random_z = random.randint(0, 2)
