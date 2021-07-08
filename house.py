@@ -1,18 +1,24 @@
 from mcpi.minecraft import Minecraft
-import mcpi.block as block
 mc = Minecraft.create()
 
-# Set minimum value of 5 for width and length 
+# Set minimum width and length to 5
 # to make room for interior lamps
-width = 7
-height = 4
-length = 7
+# Set minimum height to 3
+# Set length to an odd number for symmetry around double doors
+width = 5
+height = 3
+length = 5
 
 # Global position variables
 pos = mc.player.getTilePos()
 x = pos.x +1
 y = pos.y -1
 z = pos.z +1
+
+# Offset height for floor level
+floor = y +1
+
+mc.postToChat(f"House built at coords: {x},{y},{z}")
 
 # Blocks for walls, floor and interior
 quartz = 155
@@ -25,12 +31,12 @@ mc.setBlocks(x, y, z, x+width, y+height, z+length, quartz)
 mc.setBlocks(x+1, y+1, z+1, x+width-1, y+height, z+length-1, air)
 
 # Blocks for roof
-stair = block.STAIRS_WOOD.id
+stair = 53
 east = 0
 west = 1
 south = 2
 north = 3
-rooftop = block.WOOD_PLANKS.id
+rooftop_slab = 126
 
 # Offset height for roof base
 roof_base = y+height+1
@@ -95,11 +101,11 @@ mc.setBlocks(
     x+width-2, roof_base+2, z+1, 
     stair, south)
 
-# Rooftop (Base + 2)
+# Rooftop (Base + 3)
 mc.setBlocks(
-    x+2, roof_base+2, z+2, 
-    x+width-2, roof_base+2, z+length-2, 
-    rooftop)
+    x+2, roof_base+3, z+2, 
+    x+width-2, roof_base+3, z+length-2, 
+    rooftop_slab)
 
 # Interior Design
 # Interior lamps
@@ -115,9 +121,6 @@ south_trap = 4
 north_trap = 5
 east_trap = 6
 west_trap = 7
-
-# Offset height for floor level
-floor = y +1
 
 # South-East Lamp
 mc.setBlock(x+1, floor, z+1, glowstone)
@@ -143,29 +146,40 @@ mc.setBlock(x+width-1, floor+1, z+length-1, slab)
 mc.setBlock(x+width-1, floor, z+length-2, trapdoor, south_trap)
 mc.setBlock(x+width-2, floor, z+length-1, trapdoor, east_trap)
 
-# Door Gap (East facing)
-mc.setBlocks(
-    x, floor, z+2,
-    x, floor+1, z+3, 
-    air)
 
-# Windows (West, South and North facing)
+# Windows
 glass = 95
 
-# South windows
+# North windows
 mc.setBlocks(
     x+2, floor+1, z, 
     x+width-2, floor+height-2, z, 
     glass)
 
-# North windows
+# South windows
 mc.setBlocks(
     x+2, floor+1, z+length, 
     x+width-2, floor+height-2, z+length, 
     glass)
 
-# West windows
+# East windows
 mc.setBlocks(
     x+width, floor+1, z+2,
     x+width, floor+height-2, z+length-2, 
     glass)
+
+# East windows
+mc.setBlocks(
+    x, floor+1, z+2,
+    x, floor+height-2, z+length-2, 
+    glass)
+
+
+# Door (West side)
+# If doors do not work in your Minecraft version, 
+# collect the doors and place them manually
+door = 64
+mc.setBlock(x, floor, z+((length/2)-0.5), door, 4)
+mc.setBlock(x, floor+1, z+((length/2)-0.5), door, 8)
+mc.setBlock(x, floor, z+((length/2)+0.5), door, 1)
+mc.setBlock(x, floor+1, z+((length/2)+0.5), door, 8)

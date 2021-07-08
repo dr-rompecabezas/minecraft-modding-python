@@ -1,5 +1,0 @@
-crafting_table = 58
-oak_wood = 17
-cobblestone = 4
-iron_block = 42
-diamond_block = 57

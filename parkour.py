@@ -3,7 +3,7 @@ import random
 mc = Minecraft.create()
 
 blocks = [155, 41, 169, 98]
-parkour_distance = 8
+parkour_distance = 150
 
 def parkour_gen():
     pos = mc.player.getTilePos()
