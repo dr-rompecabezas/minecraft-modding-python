@@ -1,8 +1,8 @@
 from mcpi.minecraft import Minecraft
 mc = Minecraft.create()
 
-# Set minimum width and length to 5
-# to make room for interior lamps
+# Experiment with different width, length and height values
+# Set minimum width and length to 5 to make room for interior lamps
 # Set minimum height to 3
 # Set length to an odd number for symmetry around double doors
 width = 5
@@ -27,10 +27,10 @@ air = 0
 # Walls and floor
 mc.setBlocks(x, y, z, x+width, y+height, z+length, quartz)
 
-# House interior (empty space) within the walls plus roof opening
+# House interior (empty space) within the walls and roof opening
 mc.setBlocks(x+1, y+1, z+1, x+width-1, y+height, z+length-1, air)
 
-# Blocks for roof
+# Roof blocks
 stair = 53
 east = 0
 west = 1

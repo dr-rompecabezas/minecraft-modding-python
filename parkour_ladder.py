@@ -10,5 +10,5 @@ ladder = 65
 ladder_steps = 30
 
 for step in range(ladder_steps):
-  mc.setBlock(x, y, z, ladder)
-  y -= 1
+    mc.setBlock(x, y, z, ladder)
+    y -= 1
